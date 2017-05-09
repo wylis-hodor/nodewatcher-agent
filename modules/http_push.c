@@ -58,6 +58,7 @@ static int nw_http_push_start_acquire_data(struct nodewatcher_module *module,
         curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, nw_http_push_ignore_data);
         int timeout = nw_uci_get_int(uci, "nodewatcher.@agent[0].push_timeout");
         if (timeout == 0) {
+          /* Default. */
           timeout = 5;
         }
         curl_easy_setopt(curl, CURLOPT_TIMEOUT, timeout);
